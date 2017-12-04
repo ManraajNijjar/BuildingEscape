@@ -24,17 +24,27 @@ protected:
 
 	void OpenDoor();
 
+	void CloseDoor();
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
 	UPROPERTY(VisibleAnywhere)
-	float OpenAngle = 90.0f;
+	float OpenAngle = 0.0f;
+
+	float CloseAngle = -90.0f;
 	
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* PressurePlate;
 
 	UPROPERTY(EditAnywhere)
+	float DoorCloseDelay = 3.f;
+
+	float LastDoorOpenTime;
+
+	UPROPERTY(EditAnywhere)
 	AActor* TriggerCharacter; //Pawn inherits from Actor
+	AActor* Owner;
 };
